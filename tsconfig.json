@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+      "target": "ES6",
+      "module": "ESNext",
+      "outDir": "./templates/blank/js",
+      "rootDir": "./templates/blank/ts",
+      "strict": true,
+      "esModuleInterop": true
+    },
+    "include": ["templates/blank/ts"]
+  }
+  

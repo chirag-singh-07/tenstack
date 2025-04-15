@@ -1,43 +1,15 @@
 {
   "name": "tenstack",
   "version": "1.0.0",
-  "description": "Great question, Lucky! To add your project to GitHub, follow these steps:
-1. Create a Repository on GitHub
-- Go to GitHub and log in.
-- Click New repository (or go to your profile and click Repositories > New).
-- Give your repository a name and optionally add a description.
-- Choose public or private visibility.
-- Click Create repository.
-
-2. Initialize Git in Your Project (If Not Already Done)
-Run the following inside your project folder:
-git init
-
-
-Then add and commit your files:
-git add .
-git commit -m "Initial commit"
-
-
-3. Connect Your Project to GitHub
-Replace YOUR-REPO-URL with your actual GitHub repo URL:
-git remote add origin YOUR-REPO-URL
-git branch -M main
-git push -u origin main
-
-
-4. Verify on GitHub
-Go to your GitHub repository page—you should see your files uploaded!
-Let me know if you need any help with Git commands or troubleshooting. 🚀
-",
+  "description": "🚀 TenStack CLI – Build full-stack apps in 10 minutes with ready templates like React + Express + MongoDB.",
   "main": "./bin/index.js",
   "bin": {
     "create-tenstack-app": "./bin/index.js"
   },
   "scripts": {
     "start": "node ./bin/index.js",
-      "build:templates": "tsc",
-        "postinstall": "npm run build:templates"
+    "build:templates": "tsc",
+    "postinstall": "npm run build:templates"
   },
   "keywords": [
     "cli",

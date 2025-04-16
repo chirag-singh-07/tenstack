@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import axios from "axios";
 import { LoginAuthData, RegisterAuthData } from "@/types";
+import { toast } from "sonner";
 
 const API_BASE_URL =
   import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
@@ -52,9 +53,11 @@ export const useAuthStore = create<AuthState>((set) => ({
     try {
       const response = await axios.post("/api/auth/login", formData);
       set({ user: response.data, success: true });
+      toast("Welcome back!");
       navigate("/");
     } catch (err: any) {
       set({ error: err?.response?.data?.message || "Login failed" });
+      toast(err?.response?.data?.message || "Login failed");
     } finally {
       set({ loading: false });
     }
@@ -68,10 +71,12 @@ export const useAuthStore = create<AuthState>((set) => ({
     try {
       const response = await axios.post("/api/auth/register", formData);
       set({ user: response.data, success: true });
+      toast("Welcome! ");
       navigate("/");
     } catch (err: any) {
       set({ error: err?.response?.data?.message || "Registration failed" });
       console.log("error", err);
+      toast(err?.response?.data?.message || "Registration failed");
     } finally {
       set({ loading: false });
     }

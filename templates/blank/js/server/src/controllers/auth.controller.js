@@ -1,5 +1,5 @@
 import generateToken from "../utils/token.js";
-import User from "../models/User.model.js"; 
+import User from "../models/User.model.js";
 
 // Register User 
 export const handleRegister = async (req, res) => {
@@ -37,12 +37,10 @@ export const handleRegister = async (req, res) => {
             email: user.email,
         });
     } catch (error) {
-        return res.status(500).json({ message: 'Server error' });
+        console.log("Error on Register : ", error.message);
+        return res.status(500).json({ message: 'Server error occurred' });
     }
 }
-
-
-// Login User 
 
 export const handleLogin = async (req, res) => {
     try {
@@ -52,7 +50,7 @@ export const handleLogin = async (req, res) => {
             return res.status(400).json({ message: "All fields are required" })
         }
 
-        const user = await User .findOne({ email });
+        const user = await User.findOne({ email });
         if (!user) {
             return res.status(401).json({ message: 'Invalid credentials' });
         }
@@ -78,6 +76,7 @@ export const handleLogin = async (req, res) => {
             email: user.email,
         });
     } catch (error) {
+        console.log("Error on login : ", error.message);
         return res.status(500).json({ message: 'Server error' });
     }
 }
@@ -96,4 +95,3 @@ export const handleLogout = (req, res) => {
 export const handleGetCurrentUser = async (req, res) => {
     res.json(req.user);
 };
-    

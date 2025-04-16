@@ -1,18 +1,15 @@
 import { Request, Response } from 'express';
-import jwt from 'jsonwebtoken';
 import { User, IUser } from '../models/User.model';
-
-// Generate JWT Token
-const generateToken = (id: string): string => {
-  return jwt.sign({ id }, process.env.JWT_SECRET as string, {
-    expiresIn: '30d',
-  });
-};
+import generateToken from '../utils/token';
 
 // Register User
 export const register = async (req: Request, res: Response) => {
   try {
     const { email, password, name } = req.body as { email: string; password: string; name: string; };
+
+    if(!email || !password || !name){
+      return res.status(400).json({message:"All fields are required"})
+  }
 
     const userExists = await User.findOne({ email });
     if (userExists) {
